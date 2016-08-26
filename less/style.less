@@ -1,0 +1,88 @@
+/*
+ * Styles for talks in general
+ */
+@import "variables.less";
+
+html, body {
+	font-size: @baseFontSize;
+	padding: 0;
+	margin: 0;
+}
+body {
+	background: url(../img/whitediamond.png) center repeat;
+}
+section {
+	width: 100vw;
+	position: relative;
+	min-height: 100vh;
+	overflow: visible;
+	background: white;
+	padding-left: 5vw;
+	padding-right: 5vw;
+	padding-top: 5vh;
+	padding-top: 5vh;
+	border: 20px solid #777;
+	margin-bottom: 3px;
+	box-sizing: border-box;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	&.auto {
+		min-height: auto;
+	}
+	&[todo] {
+		border-color: pink;
+	}
+	style[contenteditable] {
+		display: block;
+		border: 2px dotted #F77710;
+		font-family: @mono;
+		overflow: visible;
+		white-space: pre-wrap;
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+	iframe {
+		width: 90%;
+	}
+}
+code, pre, style {
+	tab-size: 2;
+	-moz-tab-size: 2;
+	-o-tab-size: 2;
+	font-family: @mono;
+	white-space: pre-wrap;
+}
+pre {
+	overflow-x: scroll;
+	overflow-y: visible;
+}
+li code,
+p code {
+	background-color: #eee;
+}
+img {
+	max-width: 100%;
+}
+.center {
+	text-align: center;
+	display: block;
+}
+.hero {
+	font-size: 8vw;
+}
+li code,
+p code {
+	display: inline;
+	white-space: pre-wrap;
+}
+h1 {
+	text-align: center;
+}
+.credits {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	text-align: center;
+}

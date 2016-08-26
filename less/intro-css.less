@@ -1,0 +1,119 @@
+/*
+ * Styles specific for intro-css.html
+ */
+
+@import "variables.less";
+
+section.sponsored {
+	border-color: #09C9FF;
+	font-family: Effra, sans;
+	p {
+		font-family: inherit;
+	}
+	a {
+		color: #09C9FF;
+		&:visited {
+			color: #09C9FF;
+		}
+	}
+	img {
+		max-width: 75vw;
+		// INN Logo brand guidelines, see https://github.com/INN/Largo/blob/master/less/inc/footer.less#L145-L162
+		@inn-logo-physical-width: 1669px;
+		@inn-logo-physical-height: 385px;
+		@inn-logo-width: 40%;
+		@inn-logo-square: (@inn-logo-width*184/@inn-logo-physical-width); // 184 comes form the width of one square in INN's 2015 logo
+		@inn-logo-height: (@inn-logo-width*@inn-logo-physical-height/@inn-logo-physical-width); // the rendered height of the logo image
+		@footer-social-logo-font-size: @baseFontSize + 2;
+		margin-top: @inn-logo-square;
+		margin-bottom: @inn-logo-square*0.75;
+		max-width: @inn-logo-width;
+	}
+}
+.borders {
+	.dotted { border-style: dotted; }
+	.dashed { border-style: dashed; }
+	.solid { border-style: solid; }
+	.double { border-style: double; }
+	.groove { border-style: groove; }
+	.ridge { border-style: ridge; }
+	.outset { border-style: outset; }
+	.inset { border-style: inset; }
+
+	.thin { border-width: 1px; }
+	.thicker { border-width: 5px; }
+	.thickest { border-width: 40px; }
+
+	> div {
+		position: relative;
+		margin: 0;
+		text-align: center;
+	}
+	div div {
+		box-sizing: border-box;
+		margin: 0;
+		width: 100px;
+		height: 100px;
+		display: inline-block;
+		&.windows {
+			border-width: 50px;
+			border-top-color: green;
+			border-left-color: yellow;
+			border-right-color: red;
+			border-bottom-color: blue;
+		}
+		&.rect {
+			display: block;
+			margin: 5px auto;
+			clear: both;
+			width: 300px;
+		}
+	}
+	.b05 { border-width: 5px; }
+	.b15 { border-width: 15px; }
+	.b25 { border-width: 25px; }
+	.b35 { border-width: 35px; }
+	.b45 { border-width: 45px; }
+	.b55 { border-width: 55px; }
+	.b65 { border-width: 65px; }
+	.b75 { border-width: 75px; }
+	.b85 { border-width: 85px; }
+	.b95 { border-width: 95px; }
+	.b105 { border-width: 105px; }
+}
+.keep-reading {
+	span {
+		border: 6px solid transparent;
+		height: 0;
+		width: 0;
+		display: inline-block;
+		margin: 0.2em;
+	}
+	.left { border-left-color: black; border-right-width: 0;}
+	.right { border-right-color: black; border-left-width: 0;}
+	.top { border-top-color: black; border-bottom-width: 0;}
+	.bottom { border-bottom-color: black; border-top-width: 0;}
+}
+.images {
+	text-align: centlefter;
+	p {
+		text-align: left;
+	}
+	img {
+		display: block;
+		clear: both;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+ul.inline {
+	list-item-style: none;
+	text-align: center;
+	padding: 0;
+	li {
+		display: inline-block;
+		margin-right: 1em;
+		padding-right: 1em;
+		border-right: 3px solid fuchsia;
+	}
+}
