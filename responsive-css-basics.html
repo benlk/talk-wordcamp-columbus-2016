@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Responsive CSS Basics</title>
+		<!--
+		<meta http-equiv="refresh" content="10; URL=http://localhost/etc/cwdg-talk/responsive-css-basics.html"></meta>
+		-->
+		<link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="css/intermediate-css.css"/>
+	</head>
+	<body>
+		<section class="title intro">
+			<h1>Responsive CSS Basics</h1>
+			<ul>
+				<li>Resources</li>
+				<li>Media Queries</li>
+				<li>Z-indices</li>
+				<li>Grids</li>
+				<li>Responsive web design</li>
+				<li>Media queries</li>
+			</ul>
+			<footer class="credits">
+				<p>2015-09-22</p>
+				<p>Ben Keith <a href="https://twitter.com/benlkeith">@benlkeith</a></p>
+				<p><small><a href="https://github.com/benlk/cwdg-talk/blob/gh-pages/README.md">Credits and license</a></small></p>
+			</footer>
+		</section>
+		<section class="intro">
+			<h2>This deck does not cover:</h2>
+			<ul>
+				<li>What is CSS?</li>
+				<li>How is it loaded?</li>
+				<li>What can you do with it?</li>
+				<li>Where can you learn more?</li>
+				<li>Basic styling</li>
+			</ul>
+			<p>That's <a href="https://benlk.github.io/cwdg-talk/intro-css.html">"Introduction to CSS"</a>, a <a href="http://cwdg.io/">Collegiate Web Developers Group</a> talk.</p>
+		</section>
+		<section class="intro">
+			<h2>This file also does not cover</h2>
+			<ul>
+				<li>Stealing other people's CSS</li>
+				<li>Animations</li>
+				<li>Advanced pseudo-elements and pseudo-classes</li>
+				<li>Filters</li>
+				<li>Transformatinos</li>
+				<li>Browser prefixes</li>
+				<li>Preprocessors</li>
+				<li>Mixins</li>
+			</ul>
+			<p>See other files within <a href="index.html">this presentation</a>.</p>
+		</section>
+		<section class="sponsored">
+			<p>
+				<span class="center">This talk is brought to you in part by:</span>
+				<span class="center hero">
+					<a href="https://www.youtube.com/playlist?list=PLUSRfoOcUe4avCXPg6tPgdZzu--hBXUYx">
+						<img src="img/hamilton.jpg" alt="The top part of the poster for Hamilton, the hit musical. It's a siloughette of Alexander Hamilton, legs spread, one arm raised, pointing to the sky. His coat's tails fly. The background is gold." />
+					</a>
+				</span>
+			</p>
+			<p class="center"><a href="https://www.youtube.com/playlist?list=PLUSRfoOcUe4avCXPg6tPgdZzu--hBXUYx">Hamilton</a></p>
+			<p class="center">I spend entirely too much time listening to this soundtrack.</p>
+		</section>
+		<section>
+			<h1> How to follow along</h2>
+			<p class="center hero"><a href="https://benlk.github.io/talk-wordcamp-columbus-2016">benlk.github.io/talk-wordcamp-columbus-2016</a></p>
+			<p class="center">Go here in your browser now!</p>
+			<p> Once you have that open in your browser, open your browser's dev tools:</p>
+			<ul>
+				<li><a href="https://developer.apple.com/safari/tools/">Safari</a></li>
+				<li><a href="https://developer.chrome.com/devtools">Chrome/Chromium</a></li>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector">Firefox</a></li>
+				<li><a href="https://msdn.microsoft.com/library/bg182326(v=vs.85)">Internet Explorer 11</a></li>
+			</ul>
+		</section>
+		<section >
+			<h2>Units</h2>
+			<ul>
+				<li><code>px</code></li>
+				<li><code>%</code></li>
+			</ul>
+			<p>The root CSS unit is the pixel, <code>px</code>. It's equal to one pixel on your device, <em>unless</em> you've got a high-Dots-Per-Inch device like an iPhone or a 4K laptop or a Macbook or really any high-end device made in the last two years.</p>
+			<p>From the CSS pixel are built the units of absolute length, which <sup>usually</sup> don't change while the page is loaded:</p>
+			<ul>
+				<li><code>in</code>: Inches: 96 pixels per inch, usually. Most high-DPI devices shim this to 96 px per device screen inch.</li>
+				<li><code>mm</code>: Millimeters</li>
+				<li><code>cm</code>: Centimeters</li>
+				<li><code>pt</code>: Points, equal to 1/72 of an inch and commonly used in printing</li>
+				<li><code>pc</code>: Pica, also used in printing</li>
+			</ul>
+			<p>Remember, those aren't physical units. They're based on the ideal of <code>1in = 96px</code>. You're probably not going to use them unless you're doing CSS for print stylesheets.</p>
+			<p>There are units that scale with the font size:</p>
+			<ul>
+				<li><code>em</code>: The width of an <code>m</code> in the font, typographically speaking, but actually the calculated height of the <code>font-side</code> of this element, or the value inherited from its parent.</li>
+				<li><code>ex</code>: The height of the <code>x</code> character, so the x-height of the language. Usually equal-ish to 0.5 em.</li>
+				<li><code>ch</code>: The width-ish of the character <code>0</code> zero.</li>
+				<li><code>rem</code>: The font-size of the root element of the document, which is usually <code>html</code>.</li>
+			</ul>
+			<p>Then there are the units that scale with the size of the browser's viewport:</p>
+			<ul>
+				<li><code>vh</code>: 1/100 of the height of the viewport</li>
+				<li><code>vw</code>: 1/100 of the width of the viewport</li>
+				<li><code>vmin</code>: 1/100 of whichever is smaller, the width or height of the viewport</li>
+				<li><code>vmax</code>: 1/100 of whichever is larger, the width or height of the viewport</li>
+			</ul>
+			<p>Those <a href="http://caniuse.com/#search=vmax">don't have the best IE support</a>.</p>
+
+			<p>If you're not sure what to use, it's safe to stick to <code>px</code>.</p>
+			<p>If you're not sure if the unit is supported on a device, <a href="http://www.quirksmode.org/css/units-values/">check here</a>.</p>
+			<hr/>
+			<p class="center">And then there's this funky character: <br/><code>%</code></p>
+		</section>
+		<section>
+			<h2><code>%</code> is not a unit</h2>
+			<pre><code>.narrow { width: 30%; } </code></pre>
+			<p>When you use percent for the value of a property, it references the parent element's property value.</p>
+			<p>If the parent element's property is a percent, then the parent needs to have a width that isn't a percent.</p>
+			<p>If it's percents all the way up to the root element, then you're probably good.</p>
+			<p>If it's percents all the way up to an element with a fixed value, you're good.</p>
+			<p>If it's percents up to an element that doesn't have a fixed value, it's an invalid property and your browser will ignore it. This breaks the rule.</p>
+		</section>
+		<section >
+			<h2>Grids</h2>
+			<p>What do you get when you combine margins, padding, widths and floats?<p>
+			<p>Grid systems!</p>
+			<ul>
+				<li><a href="http://getbootstrap.com/css/#grid">Bootstrap</a></li>
+				<li><a href="http://foundation.zurb.com/docs/components/grid.html">Foundation</a></li>
+				<li><a href="http://neat.bourbon.io/">Bourbon Neat</a></li>
+				<li><a href="http://tachyons.io/">Tachyons</a></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Media Queries</h2>
+			<p>Some resources:</p>
+			<ul>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries">Mozilla Developer Network</a></li>
+				<li><a href="https://css-tricks.com/snippets/css/media-queries-for-standard-devices/">Media Queries for Standard Devices</a>: a list of screen sizes</li>
+				<li><a href="https://css-tricks.com/resolution-specific-stylesheets/">Different Stylesheets for Differently Sized Browser Windows</a></li>
+			</ul>
+			<p>Two ways to do media queries:</p>
+			<p>In the HTML</p>
+<pre><code>
+&lt;link rel="stylesheet" media="screen and (min-device-width: 800px)" href="800.css" /&gt;
+</code></pre>
+			<p><a href="media-query-demo.html">In the CSS</a></p>
+			<h3>Media queries aren't limited to browser width</h3>
+			<ul>
+				<li>The <a href="https://www.w3.org/TR/css3-mediaqueries/#media1">current standard</a></li>
+				<li>The <a href="https://drafts.csswg.org/mediaqueries/">Media Queries Level 4 proposal</a>, bringing things like a media query to determine <a href="https://drafts.csswg.org/mediaqueries/#scripting">whether JavaScript is enabled</a></li>
+			</ul>
+		</section>
+		<section>
+			<h2>Using Media Queries for Resposive Web Design</h2>
+			<ul>
+				<li><a href="http://alistapart.com/article/responsive-web-design">Responsive Web Design</a>, the article in A List Apart, and <a href="https://abookapart.com/products/responsive-web-design">the book</a></li>
+				<li>Really, <a href="https://abookapart.com/products/">everything from A Book Apart</a></li>
+				<li>From Smashing Magazine, <a href="https://www.smashingmagazine.com/2010/07/how-to-use-css3-media-queries-to-create-a-mobile-version-of-your-website/">How To Use CSS3 Media Queries To Create a Mobile Version of Your Website</a></li>
+				<li>From CSS-Tricks, <a href="https://css-tricks.com/css-media-queries/">CSS Media Queries and Using Available Space</a></li>
+			</ul>
+			<p>In general:</p>
+			<ul>
+				<li>Don't use CSS to hide elements from your readers based on the size of the screen.</li>
+				<li>Use CSS to change the presentation of those elements.</li>
+			</ul>
+		</section>
+		<section>
+			<h1>Where can you go from here?</h1>
+			<p>Learning resources:</p>
+			<ul>
+				<li><a href="http://www.w3.org/Style/CSS/">The W3C CSS page</a>, the <em>definitive</em> resource for CSS</li>
+				<li><a href="https://www.webplatform.org/">WebPlatform.org</a>, run by the W3C</li>
+				<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started">Mozilla's CSS tutorial</a></li>
+				<li><a href="https://developer.mozilla.org/en-US/">Mozilla Developer Network</a>, a fantastic resource for HTML, CSS, JavaScript, and obscure browser Js APIs</li>
+				<li><a href="https://www.codecademy.com/tracks/web">Codecademy's web track</a>, which will walk you through HTML and CSS to build your own r&eacute;sum&eacute;</li>
+				<li><a href="https://source.opennews.org/en-US/articles/lonely-newsroom-coder/">LONELY CODERS, HERE'S HOW TO GET THINGS DONE</a> from Source</li>
+				<li><a href="https://css-tricks.com/">CSS-Tricks</a>, which is what it says on the box.</a>
+			</ul>
+		</section>
+		<section>
+			<h1>What's the best way to learn?</h1>
+			<p>Resize your browser.</p>
+			<p>Play around with things on your own. Build a portfolio site. Use your browser's inspector tools to see how other people build their sites. See if you can reproduce that style.</p>
+		</section>
+	</body>
+</html>

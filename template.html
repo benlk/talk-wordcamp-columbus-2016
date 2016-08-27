@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>TKTK</title>
+		<!--
+		<meta http-equiv="refresh" content="10; URL=http://localhost/etc/cwdg-talk/TKTK.html"></meta>
+		-->
+		<link rel="stylesheet" href="css/style.css"/>
+	</head>
+	<body>
+		<section class="title intro">
+			<h1>Intermediate CSS</h1>
+			<footer class="credits">
+				<p>2015-09-22</p>
+				<p>Ben Keith <a href="https://twitter.com/benlkeith">@benlkeith</a></p>
+				<p><small><a href="https://github.com/benlk/cwdg-talk/blob/gh-pages/README.md">Credits and license</a></small></p>
+			</footer>
+		</section>
+		<section >
+			<h2>Units</h2>
+			<p><a href="intro-css.html">Last week</a>, I used a few different measures in the examples:</p>
+			<ul>
+				<li><code>px</code></li>
+				<li><code>%</code></li>
+			</ul>
+			<p>The root CSS unit is the pixel, <code>px</code>. It's equal to one pixel on your device, <em>unless</em> you've got a high-Dots-Per-Inch device like an iPhone or a 4K laptop or a Macbook or really any high-end device made in the last two years.</p>
+			<p>From the CSS pixel are built the units of absolute length, which <sup>usually</sup> don't change while the page is loaded:</p>
+			<ul>
+				<li><code>in</code>: Inches: 96 pixels per inch, usually. Most high-DPI devices shim this to 96 px per device screen inch.</li>
+				<li><code>mm</code>: Millimeters</li>
+				<li><code>cm</code>: Centimeters</li>
+				<li><code>pt</code>: Points, equal to 1/72 of an inch and commonly used in printing</li>
+				<li><code>pc</code>: Pica, also used in printing</li>
+			</ul>
+			<p>Remember, those aren't physical units. They're based on the ideal of <code>1in = 96px</code>. You're probably not going to use them unless you're doing CSS for print stylesheets.</p>
+			<p>There are units that scale with the font size:</p>
+			<ul>
+				<li><code>em</code>: The width of an <code>m</code> in the font, typographically speaking, but actually the calculated height of the <code>font-side</code> of this element, or the value inherited from its parent.</li>
+				<li><code>ex</code>: The height of the <code>x</code> character, so the x-height of the language. Usually equal-ish to 0.5 em.</li>
+				<li><code>ch</code>: The width-ish of the character <code>0</code> zero.</li>
+				<li><code>rem</code>: The font-size of the root element of the document, which is usually <code>html</code>.</li>
+			</ul>
+			<p>Then there are the units that scale with the size of the browser's viewport:</p>
+			<ul>
+				<li><code>vh</code>: 1/100 of the height of the viewport</li>
+				<li><code>vw</code>: 1/100 of the width of the viewport</li>
+				<li><code>vmin</code>: 1/100 of whichever is smaller, the width or height of the viewport</li>
+				<li><code>vmax</code>: 1/100 of whichever is larger, the width or height of the viewport</li>
+			</ul>
+			<p>Those <a href="http://caniuse.com/#search=vmax">don't have the best IE support</a>.</p>
+
+			<p>If you're not sure what to use, it's safe to stick to <code>px</code>.</p>
+			<p>If you're not sure if the unit is supported on a device, <a href="http://www.quirksmode.org/css/units-values/">check here</a>.</p>
+			<hr/>
+			<p class="center">And then there's this funky character: <br/><code>%</code></p>
+		</section>
+		<section >
+			<h2>Pseudo-elements</h2>
+			<p>Pseudo-elements are not found in your HTML.</p>
+			<p class="has-star">Example text. Loren ipsum dolor sit amet quis adipiscing three point one four one five nine two six.</p>
+			<style contenteditable>p.has-star {
+	color: purple;
+}
+p.has-star::before {
+	display: inline-block;
+	margin-right: 0.5em;
+	content: "\2605";
+	color: #990;
+	font-size: inherit;
+}
+</style>
+			<p>You can use them to add decorative symbols, to add decorative labels or triangles, or really for whatever purpose you need a single element for.</p>
+			<p>This will be covered more in detail next week, in Eli's talk.</p>
+		</section>
+	</body>
+</html>
